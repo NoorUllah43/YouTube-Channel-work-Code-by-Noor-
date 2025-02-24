@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glowing Dandelion Animation</title>
+   <style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(to top, #f1f8ff, #cce7ff);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+}
+
+.flower-container {
+    position: relative;
+    width: 300px;
+    height: 300px;
+}
+
+.dandelion {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.petal {
+    position: absolute;
+    background-color: #ffffff;
+    border-radius: 50%;
+    opacity: 0;
+    animation: bloom 4s ease-out forwards;
+    transform: scale(0) rotate(0);
+}
+
+.petal1 {
+    width: 80px;
+    height: 80px;
+    top: 0;
+    left: 50%;
+    transform-origin: bottom;
+    animation-delay: 1s;
+}
+
+.petal2 {
+    width: 80px;
+    height: 80px;
+    top: 0;
+    left: 50%;
+    transform-origin: top;
+    animation-delay: 1.5s;
+}
+
+.petal3 {
+    width: 80px;
+    height: 80px;
+    top: 50%;
+    left: 10px;
+    transform-origin: right;
+    animation-delay: 2s;
+}
+
+.petal4 {
+    width: 80px;
+    height: 80px;
+    top: 50%;
+    right: 10px;
+    transform-origin: left;
+    animation-delay: 2.5s;
+}
+
+.center {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: #ffeb3b;
+    border-radius: 50%;
+    box-shadow: 0 0 20px 10px rgba(255, 235, 59, 0.7);
+    opacity: 0;
+    animation: glow 4s ease-out forwards;
+}
+
+.seeds {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.seed {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    animation: floatSeeds 4s infinite ease-in-out;
+}
+
+@keyframes bloom {
+    0% {
+        transform: scale(0) rotate(0);
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.6;
+        transform: scale(1) rotate(45deg);
+    }
+    100% {
+        transform: scale(1) rotate(0);
+        opacity: 1;
+    }
+}
+
+@keyframes glow {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+        box-shadow: 0 0 30px 15px rgba(255, 235, 59, 0.8);
+    }
+}
+
+@keyframes floatSeeds {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    50% {
+        transform: translateY(-50px) rotate(180deg);
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+   </style>
+</head>
+<body>
+    <div class="flower-container">
+        <div class="dandelion">
+            <div class="petal petal1"></div>
+            <div class="petal petal2"></div>
+            <div class="petal petal3"></div>
+            <div class="petal petal4"></div>
+            <div class="center"></div>
+            <div class="seeds">
+                <div class="seed" style="animation-delay: 1s;"></div>
+                <div class="seed" style="animation-delay: 1.5s;"></div>
+                <div class="seed" style="animation-delay: 2s;"></div>
+                <div class="seed" style="animation-delay: 2.5s;"></div>
+                <div class="seed" style="animation-delay: 3s;"></div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js">
+        document.addEventListener("DOMContentLoaded", () => {
+    const seeds = document.querySelectorAll(".seed");
+    seeds.forEach(seed => {
+        seed.style.animationPlayState = "running";
+    });
+});
+
+    </script>
+</body>
+</html>

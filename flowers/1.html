@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Daisy Flower</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: radial-gradient(circle, #1a1a1a, #0b3d91);
+            overflow: hidden;
+        }
+
+        .flower-container {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: sway 3s infinite ease-in-out alternate;
+        }
+
+        .flower {
+            position: relative;
+            width: 150px;
+            height: 150px;
+        }
+
+        .petal {
+            position: absolute;
+            width: 60px;
+            height: 100px;
+            background: radial-gradient(circle, #ffffff83, #e6e6e6);
+            border-radius: 50%;
+            top: 25px;
+            left: 45px;
+            opacity: 0;
+            transform-origin: center bottom;
+        }
+
+        .petal:nth-child(n) {
+            animation: bloom 2s ease-out forwards;
+        }
+
+        .center {
+            width: 50px;
+            height: 50px;
+            background: radial-gradient(circle, #ffcc00 30%, #ff9900 80%);
+            border-radius: 50%;
+            position: absolute;
+            top: 100px;
+            left: 50px;
+            z-index: 2;
+            opacity: 0;
+            animation: fadeIn 1s ease-in 2s forwards;
+        }
+
+        .stem {
+            width: 15px;
+            height: 180px;
+            background: linear-gradient(to bottom, #0b6623, #1d7a36);
+            position: absolute;
+            top: 120px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 10px;
+            opacity: 0;
+            animation: fadeIn 1.5s ease-in 2.5s forwards;
+        }
+
+        .leaf {
+            position: absolute;
+            width: 50px;
+            height: 30px;
+            background: linear-gradient(to right, #0b6623, #28a745);
+            border-radius: 50%;
+            top: 230px;
+            opacity: 0;
+            animation: fadeIn 1.5s ease-in 3s forwards;
+        }
+
+        .leaf.left { left: 20px; transform: rotate(25deg);  }
+        .leaf.right { right: 20px; transform: rotate(-25deg); }
+
+        @keyframes bloom {
+            0% { transform: scale(0.1) rotate(var(--rotation)); opacity: 0; }
+            50% { transform: scale(0.8) rotate(var(--rotation)); opacity: 1; }
+            100% { transform: scale(1) rotate(var(--rotation)); opacity: 1; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes sway {
+            0% { transform: rotate(-2deg); }
+            100% { transform: rotate(2deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="flower-container">
+        <div class="flower">
+            <div class="petal" style="--rotation: 0deg;"></div>
+            <div class="petal" style="--rotation: 30deg;"></div>
+            <div class="petal" style="--rotation: 60deg;"></div>
+            <div class="petal" style="--rotation: 90deg;"></div>
+            <div class="petal" style="--rotation: 120deg;"></div>
+            <div class="petal" style="--rotation: 150deg;"></div>
+            <div class="petal" style="--rotation: 180deg;"></div>
+            <div class="petal" style="--rotation: 210deg;"></div>
+            <div class="petal" style="--rotation: 240deg;"></div>
+            <div class="petal" style="--rotation: 270deg;"></div>
+            <div class="petal" style="--rotation: 300deg;"></div>
+            <div class="petal" style="--rotation: 330deg;"></div>
+            <div class="center"></div>
+        </div>
+        <div class="stem"></div>
+        <div class="leaf left"></div>
+        <div class="leaf right"></div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let petals = document.querySelectorAll(".petal");
+            let delay = 200;
+
+            petals.forEach((petal, index) => {
+                setTimeout(() => {
+                    petal.style.opacity = "1";
+                    petal.style.animation = "bloom 2s ease-out forwards";
+                }, index * delay);
+            });
+        });
+    </script>
+</body>
+</html>

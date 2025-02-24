@@ -1,0 +1,52 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+    margin: 0;
+}
+
+.rose {
+    position: relative;
+    width: 100px;
+    height: 100px;
+}
+
+.petal {
+    position: absolute;
+    width: 50px;
+    height: 100px;
+    background-color: #ff007f;
+    border-radius: 50%;
+    transform-origin: bottom center;
+    animation: bloom 4s infinite ease-in-out;
+}
+
+.petal:nth-child(1) { transform: rotate(0deg); }
+.petal:nth-child(2) { transform: rotate(45deg); }
+.petal:nth-child(3) { transform: rotate(90deg); }
+.petal:nth-child(4) { transform: rotate(135deg); }
+.petal:nth-child(5) { transform: rotate(180deg); }
+.petal:nth-child(6) { transform: rotate(225deg); }
+.petal:nth-child(7) { transform: rotate(270deg); }
+.petal:nth-child(8) { transform: rotate(315deg); }
+
+.center {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: #ffcc00;
+    border-radius: 50%;
+    top: 35px;
+    left: 35px;
+}
+
+@keyframes bloom {
+    0%, 100% {
+        transform: scale(1) rotate(var(--rotate));
+    }
+    50% {
+        transform: scale(1.2) rotate(var(--rotate));
+    }
+}

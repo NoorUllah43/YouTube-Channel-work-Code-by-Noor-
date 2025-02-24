@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>White Flower Animation</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(to bottom, #6b9b6f, #d4eac7);
+            overflow: hidden;
+        }
+        .flower-container {
+            position: relative;
+            width: 50%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 20px;
+        }
+        .flower {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: sway 3s infinite alternate ease-in-out;
+        }
+        .petal {
+            position: absolute;
+            width: 50px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.685);
+            border-radius: 50%;
+            opacity: 0;
+            transform: scale(0.5);
+            transition: all 2s ease-out;
+        }
+        .center {
+            width: 20px;
+            height: 20px;
+            background: gold;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+            opacity: 1;
+            z-index: 1;
+            position: absolute;
+            top: 30px;
+            transition: opacity 2s ease-out;
+        }
+        @keyframes sway {
+            0% { transform: translateY(-5px) rotate(-2deg); }
+            100% { transform: translateY(5px) rotate(2deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="flower-container">
+        <div class="flower">
+            <div class="center"></div>
+            <div class="petal" style="transform: rotate(0deg) translateY(-30px);"></div>
+            <div class="petal" style="transform: rotate(60deg) translateY(-30px);"></div>
+            <div class="petal" style="transform: rotate(120deg) translateY(-30px);"></div>
+            <div class="petal" style="transform: rotate(180deg) translateY(-30px);"></div>
+            <div class="petal" style="transform: rotate(240deg) translateY(-30px);"></div>
+            <div class="petal" style="transform: rotate(300deg) translateY(-30px);"></div>
+        </div>
+        <div class="flower">
+            <div class="center"></div>
+            <div class="petal" style="transform: rotate(0deg) translateY(-30px);"></div>
+            <div class="petal" style="transform: rotate(60deg) translateY(-30px);"></div>
+            <div class="petal" style="transform: rotate(120deg) translateY(-30px);"></div>
+            <div class="petal" style="transform: rotate(180deg) translateY(-30px);"></div>
+            <div class="petal" style="transform: rotate(240deg) translateY(-30px);"></div>
+            <div class="petal" style="transform: rotate(300deg) translateY(-30px);"></div>
+        </div>
+        <div class="flower">
+            <div class="center"></div>
+            <div class="petal" style="transform: rotate(0deg) translateY(-30px);"></div>
+            <div class="petal" style="transform: rotate(60deg) translateY(-30px);"></div>
+            <div class="petal" style="transform: rotate(120deg) translateY(-30px);"></div>
+            <div class="petal" style="transform: rotate(180deg) translateY(-30px);"></div>
+            <div class="petal" style="transform: rotate(240deg) translateY(-30px);"></div>
+            <div class="petal" style="transform: rotate(300deg) translateY(-30px);"></div>
+        </div>
+    </div>
+    <script>
+        window.onload = function() {
+            setTimeout(() => {
+                document.querySelectorAll('.petal').forEach(petal => {
+                    petal.style.opacity = '1';
+                    petal.style.transform += ' scale(1)';
+                });
+                document.querySelector('.center').style.opacity = '1';
+            }, 1000);
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lily Bloom Animation</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(to bottom, #3a6b3a, #cfe7cf);
+            overflow: hidden;
+        }
+        .flower-container {
+            position: relative;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .flower {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: sway 4s infinite alternate ease-in-out;
+        }
+        .petal {
+            position: absolute;
+            width: 60px;
+            height: 100px;
+            background: linear-gradient(to bottom, white, pink);
+            border-radius: 50% 50% 0 0;
+            opacity: 0;
+            transform: scale(0.2) rotateX(90deg);
+            transition: all 3s ease-out;
+        }
+        .center {
+            width: 40px;
+            height: 40px;
+            background: radial-gradient(circle, yellow, gold);
+            border-radius: 50%;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.9);
+            /* opacity: 0; */
+            position: absolute;
+            top: 35px;
+            z-index: 1;
+            transition: opacity 3s ease-out;
+        }
+        @keyframes sway {
+            0% { transform: translateY(-5px) rotate(-2deg); }
+            100% { transform: translateY(5px) rotate(2deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="flower-container">
+        <div class="flower">
+            <div class="center"></div>
+            <div class="petal" style="transform: rotate(0deg) translateY(-40px);"></div>
+            <div class="petal" style="transform: rotate(45deg) translateY(-40px);"></div>
+            <div class="petal" style="transform: rotate(90deg) translateY(-40px);"></div>
+            <div class="petal" style="transform: rotate(135deg) translateY(-40px);"></div>
+            <div class="petal" style="transform: rotate(180deg) translateY(-40px);"></div>
+            <div class="petal" style="transform: rotate(225deg) translateY(-40px);"></div>
+            <div class="petal" style="transform: rotate(270deg) translateY(-40px);"></div>
+            <div class="petal" style="transform: rotate(315deg) translateY(-40px);"></div>
+        </div>
+    </div>
+    <script>
+        window.onload = function() {
+            setTimeout(() => {
+                document.querySelectorAll('.petal').forEach(petal => {
+                    petal.style.opacity = '1';
+                    petal.style.transform += ' scale(1) rotateX(0deg)';
+                });
+                document.querySelector('.center').style.opacity = '1';
+            }, 1000);
+        };
+    </script>
+</body>
+</html>

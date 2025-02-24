@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flower Animation</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(to top, #6bffb8, #d4f1f9);
+            overflow: hidden;
+        }
+
+        .flower {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .petal {
+            position: absolute;
+            width: 60px;
+            height: 100px;
+            background: radial-gradient(circle, #ff4d6d, #ff1654);
+            border-radius: 50%;
+            transform-origin: bottom;
+            opacity: 0;
+            animation: bloom 2s ease-in-out forwards;
+        }
+
+        /* Positioning petals */
+        .petal:nth-child(1) { transform: rotate(0deg) translateY(-30px); animation-delay: 0.2s; }
+        .petal:nth-child(2) { transform: rotate(45deg) translateY(-30px); animation-delay: 0.4s; }
+        .petal:nth-child(3) { transform: rotate(90deg) translateY(-30px); animation-delay: 0.6s; }
+        .petal:nth-child(4) { transform: rotate(135deg) translateY(-30px); animation-delay: 0.8s; }
+        .petal:nth-child(5) { transform: rotate(180deg) translateY(-30px); animation-delay: 1s; }
+        .petal:nth-child(6) { transform: rotate(225deg) translateY(-30px); animation-delay: 1.2s; }
+        .petal:nth-child(7) { transform: rotate(270deg) translateY(-30px); animation-delay: 1.4s; }
+        .petal:nth-child(8) { transform: rotate(315deg) translateY(-30px); animation-delay: 1.6s; }
+
+        /* Center of the Flower */
+        .center {
+            width: 40px;
+            height: 40px;
+            background: radial-gradient(circle, #ffcc00, #ff9900);
+            border-radius: 50%;
+            position: absolute;
+            z-index: 2;
+            top: 30px;
+        }
+
+        /* Stem */
+        .stem {
+            width: 15px;
+            height: 150px;
+            background: #0b6623;
+            position: absolute;
+            top: 70px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 10px;
+        }
+
+        /* Leaves */
+        .leaf {
+            position: absolute;
+            width: 40px;
+            height: 20px;
+            background: linear-gradient(to right, #0b6623, #28a745);
+            border-radius: 50%;
+            top: 150px;
+            
+        }
+
+        .leaf.left { left: 5px; transform: rotate(-30deg); }
+        .leaf.right { right: 5px; transform: rotate(30deg); }
+
+        /* Blooming Animation */
+        @keyframes bloom {
+            0% { transform: scale(0.1) rotate(var(--rotation)); opacity: 0; }
+            50% { transform: scale(0.8) rotate(var(--rotation)); opacity: 1; }
+            100% { transform: scale(1) rotate(var(--rotation)); opacity: 1; }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="flower">
+        <div class="petal" style="--rotation: 0deg;"></div>
+        <div class="petal" style="--rotation: 45deg;"></div>
+        <div class="petal" style="--rotation: 90deg;"></div>
+        <div class="petal" style="--rotation: 135deg;"></div>
+        <div class="petal" style="--rotation: 180deg;"></div>
+        <div class="petal" style="--rotation: 225deg;"></div>
+        <div class="petal" style="--rotation: 270deg;"></div>
+        <div class="petal" style="--rotation: 315deg;"></div>
+        <div class="center"></div>
+        <div class="stem"></div>
+        <div class="leaf left"></div>
+        <div class="leaf right"></div>
+    </div>
+</body>
+</html> 
+
+
